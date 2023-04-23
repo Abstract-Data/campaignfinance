@@ -1,10 +1,10 @@
 # Search Methods
-This module provides two data classes, `ExpenseSearch` and `ContributionSearch`, which allow you to search through expenses and contributions respectively, using a SQL query. The search queries can be executed in a PostgreSQL database through SQLAlchemy ORM.
+This module provides two data classes, `TECExpenseSearch` and `TECContributionSearch`, which allow you to search through expenses and contributions respectively, using a SQL query. The search queries can be executed in a PostgreSQL database through SQLAlchemy ORM.
 
 ## Example
 ```py title="main.py"
-from app.search_tools.tec_search import ExpenseSearch, ContributionSearch
-berry = ExpenseSearch('BERRY COMMUNICATIONS')
+from app.search_tools.tec_search import TECExpenseSearch, TECContributionSearch
+berry = TECExpenseSearch('BERRY COMMUNICATIONS')
 ```
 
 ## Classes
@@ -31,6 +31,6 @@ This class is a protocol for all query result classes. It defines the following 
 * `to_df() -> pd.DataFrame`: Returns a Pandas DataFrame of the query results.
 * `__post_init__() -> None`: Executes the fetch method after class initialization.
 
-### `ExpenseSearch` & `ContributionSearch`
+### `TECExpenseSearch` & `TECContributionSearch`
 These classes contain the needed requirements for each type of search. Both inherit from QueryResults protocol.
 

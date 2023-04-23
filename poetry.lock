@@ -1011,7 +1011,19 @@ files = [
     {file = "wrapt-1.15.0.tar.gz", hash = "sha256:d06730c6aed78cee4126234cf2d071e01b44b915e725a6cb439a879ec9754a3a"},
 ]
 
+[[package]]
+name = "zipcodes"
+version = "1.2.0"
+description = "Query U.S. state zipcodes without SQLite."
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "zipcodes-1.2.0-py2.py3-none-any.whl", hash = "sha256:e06e4ad7a460cfa892452e1b8d6207a0e9059e2a00e96bf0b7b36afcaa176a29"},
+    {file = "zipcodes-1.2.0.tar.gz", hash = "sha256:15d727e1c3426423fe0f2bdc9b056fdbc18c7c31e556d62e23537ceb35001077"},
+]
+
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "14a6d05b2f7af61c42834bc87bd6684458b4f4138fd9e68e27187baae080bd09"
+content-hash = "b3a406ef6cf67ef8d3e0cb3de5029efab9d3bf9912fbb07a82ba0538a52b6443"

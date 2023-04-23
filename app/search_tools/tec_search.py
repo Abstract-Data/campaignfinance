@@ -55,7 +55,7 @@ class QueryResults(Protocol):
 
 
 @dataclass
-class ExpenseSearch(QueryResults):
+class TECExpenseSearch(QueryResults):
     """
     Represents a query for expenses.
 
@@ -91,11 +91,11 @@ class ExpenseSearch(QueryResults):
 
         with self.__connection() as db:
             response = db.query(
-                ExpenseSearch.__sql_table
+                TECExpenseSearch.__sql_table
             ).filter(
-                ExpenseSearch.__sql_table.payeeNameOrganization.like(f'%{self.query}%'),
-                ExpenseSearch.__sql_table.recordType == self.record_type)
-            _result = [ExpenseSearch._getter.from_orm(x).dict() for x in response.all()]
+                TECExpenseSearch.__sql_table.payeeNameOrganization.like(f'%{self.query}%'),
+                TECExpenseSearch.__sql_table.recordType == self.record_type)
+            _result = [TECExpenseSearch._getter.from_orm(x).dict() for x in response.all()]
 
             self.result = _result
         return self
@@ -113,7 +113,7 @@ class ExpenseSearch(QueryResults):
 
 
 @dataclass
-class ContributionSearch(QueryResults):
+class TECContributionSearch(QueryResults):
     _query: str
     result: List = field(init=False)
     record_type: str = CampaignFinanceConfig.TYPE_CONTRIBUTION
@@ -139,18 +139,18 @@ class ContributionSearch(QueryResults):
 
         with self.__connection() as db:
             table = db.query(
-                ContributionSearch.__sql_table
+                TECContributionSearch.__sql_table
             )
             if self.organization:
                 response = table.filter(
-                    ContributionSearch.__sql_table.contributorNameOrganization.like(f'%{self.query}%'),
-                    ContributionSearch.__sql_table.recordType == self.record_type)
+                    TECContributionSearch.__sql_table.contributorNameOrganization.like(f'%{self.query}%'),
+                    TECContributionSearch.__sql_table.recordType == self.record_type)
             else:
                 response = table.filter(
-                    ContributionSearch.__sql_table.contributorNameFirst.like(f'%{self.query[0]}%'),
-                    ContributionSearch.__sql_table.contributorNameLast.like(f'%{self.query[1]}%'),
-                    ContributionSearch.__sql_table.recordType == self.record_type)
-            _result = [ContributionSearch._getter.from_orm(x).dict() for x in response.all()]
+                    TECContributionSearch.__sql_table.contributorNameFirst.like(f'%{self.query[0]}%'),
+                    TECContributionSearch.__sql_table.contributorNameLast.like(f'%{self.query[1]}%'),
+                    TECContributionSearch.__sql_table.recordType == self.record_type)
+            _result = [TECContributionSearch._getter.from_orm(x).dict() for x in response.all()]
             self.result = _result
         return self
 
@@ -161,14 +161,14 @@ class ContributionSearch(QueryResults):
 # TODO: Fix counter to work with both ContributionSearch and ExpenseSearch add as a Var in QueryResults
 @dataclass
 class ResultCounter:
-    _data: ContributionSearch or ExpenseSearch
+    _data: TECContributionSearch or TECExpenseSearch
     _amount_field: str = field(init=False)
     _date_field: str = field(init=False)
     _filer_name_field: str = field(init=False)
 
     @property
     def pandas_schema(self):
-        if isinstance(self._data, ExpenseSearch):
+        if isinstance(self._data, TECExpenseSearch):
             return TECExpensePandasSchema
 
     @property
@@ -214,15 +214,15 @@ class TECSearchPrompt:
     _type_of_search_prompt: Optional[str] = field(init=False)
     result: ResultCounter = field(init=False)
     by_year: pd.DataFrame = field(init=False)
-    _search_object: ContributionSearch or ExpenseSearch = field(init=False)
+    _search_object: TECContributionSearch or TECExpenseSearch = field(init=False)
     _counter: ResultCounter = field(init=False)
 
     def ask_search_type(self):
         _type_of_search_prompt = input('Would you like to search for a contribution or an expense?')
         if _type_of_search_prompt.lower() == 'contribution':
-            self._search_object = ContributionSearch(input('What is the name of the contributor?'))
+            self._search_object = TECContributionSearch(input('What is the name of the contributor?'))
         elif _type_of_search_prompt.lower() == 'expense':
-            self._search_object = ExpenseSearch(input('What is the name of the payee?'))
+            self._search_object = TECExpenseSearch(input('What is the name of the payee?'))
         else:
             raise ValueError('Please enter either "contribution" or "expense"')
         self._type_of_search_prompt = _type_of_search_prompt
