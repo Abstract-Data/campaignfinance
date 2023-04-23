@@ -9,7 +9,7 @@ from app.funcs.category_funcs import category_iterator
 class TomlLoader:
     state: str
     config: dict = field(init=False)
-    field_categories: Generator = field(init=False)
+    # field_categories: Generator = field(init=False)
 
     @property
     def path(self) -> Path:
@@ -20,13 +20,13 @@ class TomlLoader:
             self.config = tomli.load(f)
             return self.config
 
-    def load_field_categories(self) -> Generator:
-        self.field_categories = category_iterator(self.config)
-        return self.field_categories
+    # def load_field_categories(self) -> Generator:
+    #     self.field_categories = category_iterator(self.config)
+    #     return self.field_categories
 
     def __post_init__(self):
         self.load_config()
-        self.load_field_categories()
+        # self.load_field_categories()
 
 
 if __name__ != '__main__':

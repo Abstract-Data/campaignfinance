@@ -1,0 +1,70 @@
+FEC_API_URL='https://api.open.fec.gov/v1/'
+
+[FEC-CATEGORIES]
+candidate = 'names/candidates'
+contributions = 'schedules/schedule_a'
+expenditures = 'schedules/schedule_b'
+
+[SPENDER-RECIPIENT-DETAILS]
+    recipient_id='recipient_committee_id'
+    spender_id='contributor_id'
+    [SPENDER-RECIPIENT-DETAILS.committee_designation]
+        A='authorized by a candidate'
+        J='joint fundraising committee'
+        P='principal campaign committee of a candidate'
+        U='unauthorized'
+        B='lobbyist/registrant PAC'
+        D='leadership PAC'
+
+    [SPENDER-RECIPIENT-DETAILS.org_type]
+        C='corporation'
+        L='labor organization'
+        M='membership organization'
+        T='trade association'
+        V='cooperative'
+        W='corporation without capital stock'
+
+    [SPENDER-RECIPIENT-DETAILS.committee_type]
+        C='communication cost'
+        D='delegate'
+        E='electioneering communication'
+        H='House'
+        I='independent expenditure filer (not a committee)'
+        N='PAC - nonqualified'
+        O='independent expenditure-only (super PACs)'
+        P='presidential'
+        Q='PAC - qualified'
+        S='Senate'
+        U='single candidate independent expenditure'
+        V='PAC with non-contribution account, nonqualified'
+        W='PAC with non-contribution account, qualified'
+        X='party, nonqualified'
+        Y='party, qualified'
+        Z='national party non-federal account'
+
+[CANDIDATE-DETAILS]
+    [CANDIDATE-DETAILS.candidate_status]
+        C='present candidate'
+        F='future candidate'
+        N='not yet a candidate'
+        P='prior candidate'
+    [CANDIDATE-DETAILS.incumbent_challenge]
+        I='incumbent'
+        C='challenger'
+        O='open seat'
+
+    [CANDIDATE-DETAILS.office]
+        H='US House'
+        S='US Senate'
+        P='US President'
+
+    [CANDIDATE-DETAILS.party]
+        DEM='Democratic'
+        REP='Republican'
+        LIB='Libertarian'
+        GRE='Green'
+        IND='Independent'
+        CTE='Constitution'
+        NNE='Natural Law'
+        OTH='Other'
+        UNK='Unknown'
