@@ -50,3 +50,18 @@ files = TECFolderLoader()
 # Validate contribution files and return a dictionary of passed and failed records
 donor_validation = files.contributions.validate_category()
 ```
+
+### Search TEC Expense and Contribution Records
+```py title="main.py"
+from app.search_tools.tec_search import TECContributionSearch, TECExpenseSearch, ResultCounter
+
+# Search for all campaign expenses paid to Axiom Communications
+axiom = TECExpenseSearch('AXIOM STRATEGIES')
+
+# Convert to DataFrame
+axiom_df = axiom.to_df()
+
+# Load DataFrame to ResultCounter to use various aggregation methods
+axiom_counts = ResultCounter(axiom)
+axiom_year = axiom_counts.by_year()
+```
