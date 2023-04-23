@@ -10,11 +10,12 @@ nav:
   - Search Capabilities:
       - Expense & Contribution Searching: ./pages/funcs/search.md
       - Search Result Calculating: ./pages/funcs/result-counter.md
-  -  Record, File, and Category Handling:
-      - Example: ./pages/tec_loading/tec_load_example.md
-      - TECFolderLoader():
-          - Description: ./pages/tec_loading/tec_folderloader.md
-          - Supporting classes: ./pages/tec_loading/tec_record_classes.md
+  -  States:
+       - Texas:
+          - Example: ./pages/tec_loading/tec_load_example.md
+          - TECFolderLoader():
+              - Description: ./pages/tec_loading/tec_folderloader.md
+              - Supporting classes: ./pages/tec_loading/tec_record_classes.md
 #  - Other Folder:
 #      - Other 1: ./other/{page.md}
 #  - Project Info:
