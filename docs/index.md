@@ -17,18 +17,12 @@ This package is designed to make it easy to download, validate, and load campaig
 from app.loaders.tec_loader import TECFolderLoader
 
 # initialize TECFolderLoader object
+"""If TEC files are downloaded, will use tmp folder. If folder/files not found, will throw error instructing user to download files \
+with tec_loader.download() """
 tec_loader = TECFolderLoader()
 
 # download TEC files and extract to temporary folder
 tec_loader.download()
-
-# iterate over all files in the expenses TEC category
-for file in tec_loader.expenses:
-    print(file)
-
-# iterate over all files in the contributions TEC category
-for file in tec_loader.contributions:
-    print(file)
 ```
 
 ### Load Expense & Contribution Records

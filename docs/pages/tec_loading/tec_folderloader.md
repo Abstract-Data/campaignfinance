@@ -13,16 +13,23 @@ The `TECFolderLoader` class is responsible for loading the TEC (Texas Ethics Com
 * `download(cls, read_from_temp=True)`: Downloads the TEC files from the _ZIPFILE_URL URL and extracts them into the folder directory. By default, the method reads from the temporary folder if it exists (read_from_temp=True). If the read_from_temp argument is set to False, the method prompts the user to overwrite the temporary folder or use it as the source. If the user chooses to overwrite the temporary folder, the method downloads the files from the URL and extracts them into the temporary folder. If the user chooses to use the temporary folder as the source, the method checks if the temporary folder contains the necessary CSV files. If not, it extracts the ZIP file into the temporary folder. If the user chooses not to overwrite the temporary folder, the method exits.
 * `__post_init__(self)`: This method initializes the expenses and contributions class variables with the files in the folder directory that match the settings.EXPENSE_FILE_PREFIX and settings.CONTRIBUTION_FILE_PREFIX prefixes, respectively.
 
-## Example 
+## Download Example 
+Download TEC files and extract to temporary folder  
+- Checks if files are in tmp folder.  
+- If files are in tmp folder, will prompt user to overwrite tmp folder or use it as source. If user chooses to overwrite, will download files from TEC website and extract to tmp folder.
 ```py title="main.py"
 from app.loaders.tec_loader import TECFolderLoader
 
 # initialize TECFolderLoader object
 tec_loader = TECFolderLoader()
 
-# download TEC files and extract to temporary folder
-tec_loader.download()
+tec_loader.download(read_from_temp=True)
+```
 
+## Iterate Over Files Example
+Iterate over all files in the expenses and contributions TEC categories.
+
+```py title="main.py"
 # iterate over all files in the expenses TEC category
 for file in tec_loader.expenses:
     print(file)
@@ -32,4 +39,5 @@ for file in tec_loader.contributions:
     print(file)
 ```
 
+## Review
 In this example, we first create a new `TECFolderLoader` object. We then download the TEC files and extract them to the temporary folder by calling the `download` method. Finally, we iterate over all the files in the expenses and contributions TEC categories by accessing the `expenses` and `contributions` attributes, respectively.

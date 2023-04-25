@@ -1,13 +1,12 @@
 from sqlalchemy import create_engine, MetaData, select
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.ext.automap import automap_base
-from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker, Session
 from dotenv import load_dotenv
 import os
 from pathlib import Path
 
 """ Database connection notes:
+- Recommended to setup local postgres database or on AWS.
 - Must use psycopg2-binary for postgresql
 - Must use snowflake.sqlalchemy for snowflake
 """

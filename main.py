@@ -5,13 +5,14 @@ from app.search_tools.tec_search import TECContributionSearch, TECExpenseSearch,
 import pandera as pa
 import pandas as pd
 
-# files = TECFolderLoader()
+files = TECFolderLoader()
+files.download(read_from_temp=False)
 # cont = files.contributions.load_records()
 
-axiom = TECExpenseSearch('AXIOM STRATEGIES')
-axiom_df = axiom.to_df()
-axiom_counts = ResultCounter(axiom)
-axiom_year = axiom_counts.by_year()
+# axiom = TECExpenseSearch('AXIOM STRATEGIES')
+# axiom_df = axiom.to_df()
+# axiom_counts = ResultCounter(axiom)
+# axiom_year = axiom_counts.by_year()
 
 # write_pandas_schema(pd.DataFrame(cont), 'tec_contribution_schema')
 # expenses = files.expenses.validate_category(load_to_sql=True)

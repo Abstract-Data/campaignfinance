@@ -2,7 +2,10 @@ FEC_API_URL='https://api.open.fec.gov/v1/'
 
 [FEC-CATEGORIES]
 candidate = 'names/candidates'
+candidate-filings = 'candidate/{candidate_id}/filings'
+committee = 'candidate/{committee_id}/committees'
 contributions = 'schedules/schedule_a'
+contributions-subid = 'schedules/schedule_a/by_size/by_candidate'
 expenditures = 'schedules/schedule_b'
 
 [SPENDER-RECIPIENT-DETAILS]

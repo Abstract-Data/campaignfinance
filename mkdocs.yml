@@ -13,9 +13,8 @@ nav:
   -  States:
        - Texas:
           - Example: ./pages/tec_loading/tec_load_example.md
-          - TECFolderLoader():
-              - Description: ./pages/tec_loading/tec_folderloader.md
-              - Supporting classes: ./pages/tec_loading/tec_record_classes.md
+          - Download: ./pages/tec_loading/tec_folderloader.md
+          - Supporting classes: ./pages/tec_loading/tec_record_classes.md
 #  - Other Folder:
 #      - Other 1: ./other/{page.md}
 #  - Project Info:

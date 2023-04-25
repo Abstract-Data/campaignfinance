@@ -306,7 +306,7 @@ class TECFolderLoader:
     @classmethod
     def file_list(cls, prefix) -> Generator[Path, None, None]:
         if not cls.folder.exists():
-            err_msg = FileNotFoundError(f'Folder {cls.folder} does not exist')
+            err_msg = FileNotFoundError(f'Folder {cls.folder} does not exist. Run download method first.')
             logger.warning(err_msg)
             raise err_msg
 
