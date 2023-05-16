@@ -22,6 +22,7 @@ setuptools = "^67.6.1"
 aiopath = ">=0.6.11,<0.7.0"
 pandera = "^0.14.5"
 zipcodes = "^1.2.0"
+psycopg2 = "^2.9.6"
 
 
 [build-system]

@@ -1,7 +1,10 @@
 import pandas as pd
 from pathlib import Path
+from typing import Generator
+import csv
 
 func_path = Path(__file__).parent.parent.joinpath("pandas_schemas")
+
 
 def uppercase(series: pd.Series) -> pd.Series:
     return series.str.strip().str.upper()
@@ -29,3 +32,10 @@ def write_pandas_schema(df: pd.DataFrame, schema_name: str, file: str | Path = N
     with open(file.joinpath(f"{schema_name}.py"), 'w') as f:
         f.write(schema.to_script())
         print(f"Schema written to {file.joinpath(f'{schema_name}.py')}")
+
+
+def load_csv(file: Path) -> Generator[dict, None, None]:
+    opn = open(file, 'r')
+    for _record in csv.DictReader(opn):
+        r = _record
+        yield r
